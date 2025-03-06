@@ -19,6 +19,17 @@ function findAllUsers(): array
         ->query("SELECT * FROM users")
         ->fetchAll();
 }
+function findOneUsersById(int $id): bool | array
+{
+    global $db;
+    $query = "SELECT * FROM users WHERE id= :id";
+
+    $sql = $db->prepare($query);
+    $sql ->execute(params:[
+        'id' => $id
+    ]);
+    return $sql->fetch();
+}
 
 /**
  * Récupère un utilisateur en BDD en filtrant par son email

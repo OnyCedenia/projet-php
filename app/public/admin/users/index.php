@@ -71,7 +71,7 @@ if (empty($_SESSION["user"])
                             </td>
                             <td>
                                 <div class="table-btn">
-                                    <a href="#" class="btn btn-secondary">
+                                    <a href="/admin/users/update.php?id=<?= $user['id']; ?>" class="btn btn-secondary">
                                         Modifier
                                     </a>
                                     <a href="#" class="btn btn-danger">

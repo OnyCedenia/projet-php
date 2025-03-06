@@ -14,6 +14,11 @@
         </ul>
         <ul class="navbar-buttons">
             <?php if (!empty($_SESSION['user'])): ?>
+                <?php if (in_array('ROLE_ADMIN', haystack: $_SESSION ['user'] ['roles'])): ?>
+                    <li class="navbar-item">
+                        <a href="/admin/users" class="btn btn-light">Admin User</a>
+                    </li>
+                <?php endif; ?>
                 <li class="navbar-item">
                     <a href="/logout.php" class="btn btn-danger">Logout</a>
                 </li>

@@ -180,6 +180,13 @@ body {
     flex-wrap: wrap;
 }
 
+#description{
+    margin-bottom: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    height: 10rem;
+}
+
 input,
 textarea {
     width: 100%;

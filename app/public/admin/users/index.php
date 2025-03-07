@@ -1,22 +1,16 @@
-<?php 
+<?php
 
-session_start(); 
+session_start();
 
-//utilisation de la session
-//verifier si l'utilisateur n'est pas Admin on redirige
+// Utilisation de la session
+// Vérifier si l'utilisateur n'est pas Admin on redirige
+// Si clé user vide ou non définie -> Pas connecté
+require_once '/app/Utils/utils.php';
 
-//si clé user vide ou non definie -> pas connecté
-if (empty($_SESSION["user"])
-    || !in_array(needle: 'ROLE_ADMIN', haystack: $_SESSION ['user'] ['roles'])
-){
-    //on definit un message d'erreur
-    $_SESSION ['messages']['danger'] = "Vous n'avez pas le droit d'accéder à cette page";
-   
-    //on redirige versla page de login
-    header(header:'Location: /login.php');
-    exit(302);
-}
- require_once '/app/Requests/users.php';
+checkAdmin();
+
+require_once '/app/Requests/users.php';
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -34,53 +28,34 @@ if (empty($_SESSION["user"])
         <?php require_once '/app/public/Layout/_messages.php'; ?>
         <section class="container mt-4">
             <h1 class="text-center">Administration des users</h1>
-            <table class="card">
+            <table class="card mt-4">
                 <thead>
                     <tr>
-                        <th>
-                            ID
-                        </th>
-                        <th>
-                            Nom Complet
-                        </th>
-                        <th>
-                            Email
-                        </th>
-                        <th>
-                            Roles
-                        </th>
-                        <th>
-                            Actions
-                        </th>
+                        <th>ID</th>
+                        <th>Nom Complet</th>
+                        <th>Email</th>
+                        <th>Roles</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach(findAllUsers() as $user): ?>
+                    <?php foreach (findAllUsers() as $user): ?>
                         <tr>
-                            <td>
-                                <?= $user['id']; ?>
-                            </td>
-                            <td>
-                                <?= "$user[first_name] $user[last_name]"; ?>
-                            </td>
-                            <td>
-                                <?= $user['email']; ?>
-                            </td>
-                            <td>
-                                <?= $user['roles']; ?>
-                            </td>
+                            <td><?= $user['id']; ?></td>
+                            <td><?= "$user[first_name] $user[last_name]"; ?></td>
+                            <td><?= $user['email']; ?></td>
+                            <td><?= $user['roles']; ?></td>
                             <td>
                                 <div class="table-btn">
-                                    <a href="/admin/users/update.php?id=<?= $user['id']; ?>" class="btn btn-secondary">
-                                        Modifier
-                                    </a>
-                                    <a href="#" class="btn btn-danger">
-                                        Supprimer
-                                    </a>
+                                    <a href="/admin/users/update.php?id=<?= $user['id']; ?>" class="btn btn-secondary">Modifier</a>
+                                    <form action="/admin/users/delete.php" method="POST" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce user ?')">
+                                        <input type="hidden" name="id" value="<?= $user['id']; ?>">
+                                        <button type="submit" class="btn btn-danger">Supprimer</button>
+                                    </form>
                                 </div>
                             </td>
                         </tr>
-                        <?php endforeach; ?>
+                    <?php endforeach; ?>
                 </tbody>
             </table>
         </section>

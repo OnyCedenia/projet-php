@@ -193,24 +193,23 @@ label {
     margin-bottom: 0.3rem;
 }
 
-
 /************************************** TABLE **************************************/
-
-table{
+table {
     width: 100%;
     border-collapse: collapse;
     text-align: center;
 }
 
-thead{
+thead {
     border-bottom: 1px solid var(--border-color);
 }
+
 th,
-td{
+td {
     padding: 1rem;
 }
 
-.table-btn{
+.table-btn {
     display: flex;
     gap: 0.5rem;
     flex-wrap: wrap;
@@ -218,7 +217,5 @@ td{
 }
 
 .table-btn .btn {
-
-width: max-content;
+    width: max-content;
 }
-

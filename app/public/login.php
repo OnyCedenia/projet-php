@@ -71,7 +71,6 @@ if (
                 </div>
                 <button type="submit" class="btn btn-primary">Se connecter</button>
             </form>
-            <a href="/register.php" class="mt-4">Se créer un compte</a>
         </section>
     </main>
 </body>

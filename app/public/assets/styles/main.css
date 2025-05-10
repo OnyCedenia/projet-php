@@ -8,9 +8,10 @@
     --light: #f8f9fa;
     --dark: #343a40;
     --border-radius: 8px;
+    --border-color: #a1a8af;
 }
-/**********************************************************REST**********************************************************/
 
+/************************************** RESET **************************************/
 * {
     margin: 0;
     padding: 0;
@@ -39,9 +40,100 @@ body {
     color: var(--dark);
     font-family: "Roboto", sans-serif;
 }
+/************************************** UTILS **************************************/
+.container {
+    width: 90%;
+    margin: 0 auto;
+}
 
-/**********************************************************NAVBAR**********************************************************/
+.mt-4 {
+    margin-top: 1rem;
+}
 
+.mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.w-50 {
+    width: 50%;
+}
+
+.text-center {
+    text-align: center;
+}
+
+/************************************** BUTTONS **************************************/
+.btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    cursor: pointer;
+    border-radius: var(--border-radius);
+    transition: 0.3s ease-in;
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: var(--light);
+}
+
+.btn-primary:hover {
+    background: #004fa3;
+}
+
+.btn-secondary {
+    background: var(--secondary);
+    color: var(--light);
+}
+
+.btn-secondary:hover {
+    background: #5a6268;
+}
+
+.btn-danger {
+    background: var(--danger);
+    color: var(--light);
+}
+
+.btn-danger:hover {
+    background: #c82333;
+}
+
+.btn-light {
+    background: var(--light);
+    color: var(--dark);
+}
+
+.btn-light:hover {
+    background: #e2e6ea;
+}
+
+/************************************** ALERT **************************************/
+.alert {
+    border-radius: var(--border-radius);
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.alert-danger {
+    background: rgba(228, 61, 77, 0.7);
+    border: 1px solid var(--danger);
+    color: var(--light);
+}
+
+.alert-success {
+    background: rgba(40, 167, 69, 0.7);
+    border: 1px solid var(--success);
+    color: var(--light);
+}
+
+.alert-info {
+    background: rgba(23, 162, 184, 0.7);
+    border: 1px solid var(--info);
+    color: var(--light);
+}
+
+/************************************** NAVBAR **************************************/
 .navbar {
     position: sticky;
     top: 0;
@@ -60,4 +152,77 @@ body {
     display: flex;
     gap: 1rem;
     align-items: center;
+}
+
+.navbar-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-left: auto;
+    align-items: center;
+}
+
+/************************************** CARD **************************************/
+.card {
+    border-radius: var(--border-radius);
+    border: var(--border-color);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+}
+
+.card .btn {
+    width: 100%;
+}
+
+/************************************** FORM **************************************/
+.form-group {
+    margin-bottom: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#description{
+    margin-bottom: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    height: 10rem;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+}
+
+label {
+    display: block;
+    margin-bottom: 0.3rem;
+}
+
+/************************************** TABLE **************************************/
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+thead {
+    border-bottom: 1px solid var(--border-color);
+}
+
+th,
+td {
+    padding: 1rem;
+}
+
+.table-btn {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.table-btn .btn {
+    width: max-content;
 }
